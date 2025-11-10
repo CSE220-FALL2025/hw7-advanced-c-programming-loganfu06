@@ -1,14 +1,53 @@
+// Name: Logan Fu
+// ID: 116099756
+// NetID: ltfu
 #include "hw7.h"
 
 bst_sf* insert_bst_sf(matrix_sf *mat, bst_sf *root) {
-    return NULL;
+    if(root == NULL) {
+        bst_sf* m = malloc(sizeof(bst_sf));
+        m->left_child = NULL;
+        m->right_child = NULL;
+        m->mat = mat;
+        return m;
+    }
+    else {
+        char name = mat->name;
+        char rootName = root->mat->name;
+        if(name < rootName) {
+            root->left_child = insert_bst_sf(mat, root->left_child);
+        }
+        else {
+            root->right_child = insert_bst_sf(mat, root->right_child);
+        }
+        return root;
+        
+    }
 }
 
 matrix_sf* find_bst_sf(char name, bst_sf *root) {
-    return NULL;
+    if(root == NULL) {
+        return NULL;
+    }
+    else if(name == root->mat->name) {
+        return root->mat;
+    }
+    else {
+        if(name < root->mat->name) {
+            return find_bst_sf(name, root->left_child);
+        }
+        else {
+            return find_bst_sf(name, root->right_child);
+        }
+    }
 }
 
 void free_bst_sf(bst_sf *root) {
+    if(root != NULL) {
+        free_bst_sf(root->left_child);
+        free_bst_sf(root->right_child);
+        free(root);
+    }
 }
 
 matrix_sf* add_mats_sf(const matrix_sf *mat1, const matrix_sf *mat2) {

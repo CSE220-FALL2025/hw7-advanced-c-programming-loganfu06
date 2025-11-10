@@ -242,153 +242,153 @@ Test(base_operator_return, trans02, .description="Transpose a 6x3 matrix") {
 Test(base_operator_valgrind, trans02) { expect_no_valgrind_errors(run_with_valgrind("trans02")); }
 
 /* insert_bst_sf() tests */
-// void inorder_sf(bst_sf *root, char *output) {
-//     if (!root) return;
-//     inorder_sf(root->left_child, output);
-//     char s[2] = {root->mat->name};
-//     strcat(output, s);
-//     inorder_sf(root->right_child, output);
-// }
-// int compare_chars_sf(const void* a, const void* b) { return (*(char*)a - *(char*)b); }
-// void sort_string_sf(char* str) { qsort(str, strlen(str), sizeof(char), compare_chars_sf); }
+void inorder_sf(bst_sf *root, char *output) {
+    if (!root) return;
+    inorder_sf(root->left_child, output);
+    char s[2] = {root->mat->name};
+    strcat(output, s);
+    inorder_sf(root->right_child, output);
+}
+int compare_chars_sf(const void* a, const void* b) { return (*(char*)a - *(char*)b); }
+void sort_string_sf(char* str) { qsort(str, strlen(str), sizeof(char), compare_chars_sf); }
 
-// Test(base_insert_bst, insert_bst01, .description="Test if insert_bst_sf creates a valid BST.") {
-//     bst_sf *root = NULL;
-//     char names[] = "HBZ";
-//     matrix_sf *mats[strlen(names)];
-//     for (size_t i = 0; i < strlen(names); i++) {
-//         mats[i] = malloc(sizeof(matrix_sf));
-//         mats[i]->name = names[i];
-//         root = insert_bst_sf(mats[i], root);
-//     }
-//     char output[27] = {0};
-//     inorder_sf(root, output);
-//     sort_string_sf(names);
-//     cr_expect_arr_eq(output, names, strlen(names), "BST does not store the nodes in sorted order.");
-//     for (size_t i = 0; i < strlen(names); i++)
-//         free(mats[i]);
-//     // Note: test does not deallocate memory of BST.    
-// }
+Test(base_insert_bst, insert_bst01, .description="Test if insert_bst_sf creates a valid BST.") {
+    bst_sf *root = NULL;
+    char names[] = "HBZ";
+    matrix_sf *mats[strlen(names)];
+    for (size_t i = 0; i < strlen(names); i++) {
+        mats[i] = malloc(sizeof(matrix_sf));
+        mats[i]->name = names[i];
+        root = insert_bst_sf(mats[i], root);
+    }
+    char output[27] = {0};
+    inorder_sf(root, output);
+    sort_string_sf(names);
+    cr_expect_arr_eq(output, names, strlen(names), "BST does not store the nodes in sorted order.");
+    for (size_t i = 0; i < strlen(names); i++)
+        free(mats[i]);
+    // Note: test does not deallocate memory of BST.    
+}
 
-// Test(base_insert_bst, insert_bst02, .description="Test if insert_bst_sf creates a valid BST.") {
-//     bst_sf *root = NULL;
-//     char names[] = "HABETZ";
-//     matrix_sf *mats[strlen(names)];
-//     for (size_t i = 0; i < strlen(names); i++) {
-//         mats[i] = malloc(sizeof(matrix_sf));
-//         mats[i]->name = names[i];
-//         root = insert_bst_sf(mats[i], root);
-//     }
-//     char output[27] = {0};
-//     inorder_sf(root, output);
-//     sort_string_sf(names);
-//     cr_expect_arr_eq(output, names, strlen(names), "BST does not store the nodes in sorted order.");
-//     for (size_t i = 0; i < strlen(names); i++)
-//         free(mats[i]);
-//     // Note: test does not deallocate memory of BST.    
-// }
+Test(base_insert_bst, insert_bst02, .description="Test if insert_bst_sf creates a valid BST.") {
+    bst_sf *root = NULL;
+    char names[] = "HABETZ";
+    matrix_sf *mats[strlen(names)];
+    for (size_t i = 0; i < strlen(names); i++) {
+        mats[i] = malloc(sizeof(matrix_sf));
+        mats[i]->name = names[i];
+        root = insert_bst_sf(mats[i], root);
+    }
+    char output[27] = {0};
+    inorder_sf(root, output);
+    sort_string_sf(names);
+    cr_expect_arr_eq(output, names, strlen(names), "BST does not store the nodes in sorted order.");
+    for (size_t i = 0; i < strlen(names); i++)
+        free(mats[i]);
+    // Note: test does not deallocate memory of BST.    
+}
 
-// Test(base_insert_bst, insert_bst03, .description="Test if insert_bst_sf creates a valid BST.") {
-//     bst_sf *root = NULL;
-//     char names[] = "GTHRNBVCUJELMOPSQZA";
-//     matrix_sf *mats[strlen(names)];
-//     for (size_t i = 0; i < strlen(names); i++) {
-//         mats[i] = malloc(sizeof(matrix_sf));
-//         mats[i]->name = names[i];
-//         root = insert_bst_sf(mats[i], root);
-//     }
-//     char output[27] = {0};
-//     inorder_sf(root, output);
-//     sort_string_sf(names);
-//     cr_expect_arr_eq(output, names, strlen(names), "BST does not store the nodes in sorted order.");
-//     for (size_t i = 0; i < strlen(names); i++)
-//         free(mats[i]);
-//     // Note: test does not deallocate memory of BST.    
-// }
+Test(base_insert_bst, insert_bst03, .description="Test if insert_bst_sf creates a valid BST.") {
+    bst_sf *root = NULL;
+    char names[] = "GTHRNBVCUJELMOPSQZA";
+    matrix_sf *mats[strlen(names)];
+    for (size_t i = 0; i < strlen(names); i++) {
+        mats[i] = malloc(sizeof(matrix_sf));
+        mats[i]->name = names[i];
+        root = insert_bst_sf(mats[i], root);
+    }
+    char output[27] = {0};
+    inorder_sf(root, output);
+    sort_string_sf(names);
+    cr_expect_arr_eq(output, names, strlen(names), "BST does not store the nodes in sorted order.");
+    for (size_t i = 0; i < strlen(names); i++)
+        free(mats[i]);
+    // Note: test does not deallocate memory of BST.    
+}
 
 // /* find_bst_sf() tests */
-// Test(base_find_bst, search_bst01, .description="Test if find_bst returns the correct matrix.") {
-//     bst_sf *root = NULL;
-//     char names[] = "HABETZ";
-//     matrix_sf *mats[strlen(names)];
-//     for (size_t i = 0; i < strlen(names); i++) {
-//         mats[i] = malloc(sizeof(matrix_sf));
-//         mats[i]->name = names[i];
-//         root = insert_bst_sf(mats[i], root);
-//     }
-//     char *search_names = "BTZ";
-//     matrix_sf *mat;
-//     for (size_t i = 0; i < strlen(search_names); i++) {
-//         mat = find_bst_sf(search_names[i], root);
-//         cr_expect_eq(mat->name, search_names[i], 
-//             "The returned matrix did not have the expected name. Actual: %c, Expected: %c", mat->name, search_names[i]);
-//     } 
+Test(base_find_bst, search_bst01, .description="Test if find_bst returns the correct matrix.") {
+    bst_sf *root = NULL;
+    char names[] = "HABETZ";
+    matrix_sf *mats[strlen(names)];
+    for (size_t i = 0; i < strlen(names); i++) {
+        mats[i] = malloc(sizeof(matrix_sf));
+        mats[i]->name = names[i];
+        root = insert_bst_sf(mats[i], root);
+    }
+    char *search_names = "BTZ";
+    matrix_sf *mat;
+    for (size_t i = 0; i < strlen(search_names); i++) {
+        mat = find_bst_sf(search_names[i], root);
+        cr_expect_eq(mat->name, search_names[i], 
+            "The returned matrix did not have the expected name. Actual: %c, Expected: %c", mat->name, search_names[i]);
+    } 
     
-//     for (size_t i = 0; i < strlen(names); i++)
-//         free(mats[i]);
-//     // Note: test does not deallocate memory of BST.  
-// }
+    for (size_t i = 0; i < strlen(names); i++)
+        free(mats[i]);
+    // Note: test does not deallocate memory of BST.  
+}
 
-// Test(base_find_bst, search_bst02, .description="Test if find_bst returns the correct matrix.") {
-//     bst_sf *root = NULL;
-//     char names[] = "GTHRNBVCUJELMOPSQZA";
-//     matrix_sf *mats[strlen(names)];
-//     for (size_t i = 0; i < strlen(names); i++) {
-//         mats[i] = malloc(sizeof(matrix_sf));
-//         mats[i]->name = names[i];
-//         root = insert_bst_sf(mats[i], root);
-//     }
-//     char *search_names = "ERPQT";
-//     matrix_sf *mat;
-//     for (size_t i = 0; i < strlen(search_names); i++) {
-//         mat = find_bst_sf(search_names[i], root);
-//         cr_expect_eq(mat->name, search_names[i], 
-//             "The returned matrix did not have the expected name. Actual: %c, Expected: %c", mat->name, search_names[i]);
-//     } 
+Test(base_find_bst, search_bst02, .description="Test if find_bst returns the correct matrix.") {
+    bst_sf *root = NULL;
+    char names[] = "GTHRNBVCUJELMOPSQZA";
+    matrix_sf *mats[strlen(names)];
+    for (size_t i = 0; i < strlen(names); i++) {
+        mats[i] = malloc(sizeof(matrix_sf));
+        mats[i]->name = names[i];
+        root = insert_bst_sf(mats[i], root);
+    }
+    char *search_names = "ERPQT";
+    matrix_sf *mat;
+    for (size_t i = 0; i < strlen(search_names); i++) {
+        mat = find_bst_sf(search_names[i], root);
+        cr_expect_eq(mat->name, search_names[i], 
+            "The returned matrix did not have the expected name. Actual: %c, Expected: %c", mat->name, search_names[i]);
+    } 
     
-//     for (size_t i = 0; i < strlen(names); i++)
-//         free(mats[i]);
-//     // Note: test does not deallocate memory of BST.  
-// }
+    for (size_t i = 0; i < strlen(names); i++)
+        free(mats[i]);
+    // Note: test does not deallocate memory of BST.  
+}
 
-// Test(base_find_bst, search_bst03, .description="Test if find_bst returns the correct matrix.") {
-//     bst_sf *root = NULL;
-//     char names[] = "GTHRNBVCUJELMOPSQZA";
-//     matrix_sf *mats[strlen(names)];
-//     for (size_t i = 0; i < strlen(names); i++) {
-//         mats[i] = malloc(sizeof(matrix_sf));
-//         mats[i]->name = names[i];
-//         root = insert_bst_sf(mats[i], root);
-//     }
-//     char *search_names = "AZXHODJAE";
-//     matrix_sf *mat;
-//     for (size_t i = 0; i < strlen(search_names); i++) {
-//         mat = find_bst_sf(search_names[i], root);
-//         if (search_names[i] == 'D' || search_names[i] == 'X')
-//             cr_expect_eq(mat, NULL, "The return value should have been NULL, but it was %p", (void*)mat);
-//         else
-//             cr_expect_eq(mat->name, search_names[i], 
-//                 "The returned matrix did not have the expected name. Actual: %c, Expected: %c", mat->name, search_names[i]);
+Test(base_find_bst, search_bst03, .description="Test if find_bst returns the correct matrix.") {
+    bst_sf *root = NULL;
+    char names[] = "GTHRNBVCUJELMOPSQZA";
+    matrix_sf *mats[strlen(names)];
+    for (size_t i = 0; i < strlen(names); i++) {
+        mats[i] = malloc(sizeof(matrix_sf));
+        mats[i]->name = names[i];
+        root = insert_bst_sf(mats[i], root);
+    }
+    char *search_names = "AZXHODJAE";
+    matrix_sf *mat;
+    for (size_t i = 0; i < strlen(search_names); i++) {
+        mat = find_bst_sf(search_names[i], root);
+        if (search_names[i] == 'D' || search_names[i] == 'X')
+            cr_expect_eq(mat, NULL, "The return value should have been NULL, but it was %p", (void*)mat);
+        else
+            cr_expect_eq(mat->name, search_names[i], 
+                "The returned matrix did not have the expected name. Actual: %c, Expected: %c", mat->name, search_names[i]);
 
-//     } 
+    } 
     
-//     for (size_t i = 0; i < strlen(names); i++)
-//         free(mats[i]);
-//     // Note: test does not deallocate memory of BST.  
-// }
+    for (size_t i = 0; i < strlen(names); i++)
+        free(mats[i]);
+    // Note: test does not deallocate memory of BST.  
+}
 
 // /* free_bst_sf() tests */
-// Test(base_free_bst, free_bst01, .description="Test if BST is properly deallocated.") {
-//     expect_no_valgrind_errors(run_with_valgrind("free_bst01"));
-// }
+Test(base_free_bst, free_bst01, .description="Test if BST is properly deallocated.") {
+    expect_no_valgrind_errors(run_with_valgrind("free_bst01"));
+}
 
-// Test(base_free_bst, free_bst02, .description="Test if BST is properly deallocated.") {
-//     expect_no_valgrind_errors(run_with_valgrind("free_bst02"));
-// }
+Test(base_free_bst, free_bst02, .description="Test if BST is properly deallocated.") {
+    expect_no_valgrind_errors(run_with_valgrind("free_bst02"));
+}
 
-// Test(base_free_bst, free_bst03, .description="Test if BST is properly deallocated.") {
-//     expect_no_valgrind_errors(run_with_valgrind("free_bst03"));
-// }
+Test(base_free_bst, free_bst03, .description="Test if BST is properly deallocated.") {
+    expect_no_valgrind_errors(run_with_valgrind("free_bst03"));
+}
 
 // /* create_matrix_sf() tests*/
 // Test(base_create_matrix, create01, .description="Create an 8x1 matrix") {
