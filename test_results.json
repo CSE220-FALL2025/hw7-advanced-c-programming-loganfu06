@@ -1,0 +1,87 @@
+{
+  "id": "Criterion v2.4.1",
+  "passed": 12,
+  "failed": 0,
+  "errored": 0,
+  "skipped": 0,
+  "test_suites": [
+    {
+      "name": "base_operator_valgrind",
+      "passed": 6,
+      "failed": 0,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "trans02",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "trans01",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "mult02",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "mult01",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "add02",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "add01",
+          "assertions": 1,
+          "status": "PASSED"
+        }
+      ]
+    },
+    {
+      "name": "base_operator_return",
+      "passed": 6,
+      "failed": 0,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "trans01",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "trans02",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "mult02",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "mult01",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "add01",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "add02",
+          "assertions": 3,
+          "status": "PASSED"
+        }
+      ]
+    }
+  ]
+}
