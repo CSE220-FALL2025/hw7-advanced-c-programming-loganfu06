@@ -1,6 +1,6 @@
 {
   "id": "Criterion v2.4.1",
-  "passed": 23,
+  "passed": 27,
   "failed": 0,
   "errored": 0,
   "skipped": 0,
@@ -13,12 +13,12 @@
       "skipped": 0,
       "tests": [
         {
-          "name": "trans01",
+          "name": "trans02",
           "assertions": 1,
           "status": "PASSED"
         },
         {
-          "name": "trans02",
+          "name": "trans01",
           "assertions": 1,
           "status": "PASSED"
         },
@@ -108,6 +108,35 @@
       ]
     },
     {
+      "name": "base_infix2postfix",
+      "passed": 4,
+      "failed": 0,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "infix2postfix04",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "infix2postfix02",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "infix2postfix03",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "infix2postfix01",
+          "assertions": 1,
+          "status": "PASSED"
+        }
+      ]
+    },
+    {
       "name": "base_free_bst",
       "passed": 3,
       "failed": 0,
@@ -144,13 +173,13 @@
           "status": "PASSED"
         },
         {
-          "name": "search_bst01",
-          "assertions": 3,
+          "name": "search_bst02",
+          "assertions": 5,
           "status": "PASSED"
         },
         {
-          "name": "search_bst02",
-          "assertions": 5,
+          "name": "search_bst01",
+          "assertions": 3,
           "status": "PASSED"
         }
       ]
@@ -163,12 +192,12 @@
       "skipped": 0,
       "tests": [
         {
-          "name": "create02",
+          "name": "create01",
           "assertions": 4,
           "status": "PASSED"
         },
         {
-          "name": "create01",
+          "name": "create02",
           "assertions": 4,
           "status": "PASSED"
         }

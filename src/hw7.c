@@ -133,8 +133,73 @@ matrix_sf* create_matrix_sf(char name, const char *expr) {
     return m;
 }
 
+int getP(char c) {
+    switch(c) {
+        case '+':
+            return 1;
+        case '*':
+            return 2;
+        default:
+            return 3;
+    }
+
+}
 char* infix2postfix_sf(char *infix) {
-    return NULL;
+    struct stack {
+        char value;
+        struct stack *prev;
+    };
+    struct stack *top = NULL;
+    char *str = malloc(strlen(infix) + 1);
+    char *result = str;
+    while(*infix != '\0') {
+        char c = *infix;
+        if(isalpha(c)) {
+            *str = c;
+            str++;
+        }
+        else if(c == '(') {
+            struct stack *nextValue = malloc(sizeof(struct stack));
+            nextValue->value = c;
+            nextValue->prev = top;
+            top = nextValue;
+        }
+        else if(c == ')') {
+            while(top->value != '(') {
+                *str = top->value;
+                str++;
+                struct stack *pTop = top;
+                top = top->prev;
+                free(pTop);
+            }
+            struct stack *pTop = top;
+            top = top->prev;
+            free(pTop);
+        }
+        else {
+            while(top != NULL && top->value != '(' && getP(c) <= getP(top->value)) {
+                *str = top->value;
+                str++;
+                struct stack *pTop = top;
+                top = top->prev;
+                free(pTop);
+            }
+            struct stack *nextValue = malloc(sizeof(struct stack));
+            nextValue->value = c;
+            nextValue->prev = top;
+            top = nextValue;
+        }
+        infix++;
+    }
+    while(top != NULL) {
+        *str = top->value;
+        str++;
+        struct stack *pTop = top;
+        top = top->prev;
+        free(pTop);
+    }
+    *str = '\0';
+    return result;
 }
 
 matrix_sf* evaluate_expr_sf(char name, char *expr, bst_sf *root) {
