@@ -391,17 +391,17 @@ Test(base_free_bst, free_bst03, .description="Test if BST is properly deallocate
 }
 
 // /* create_matrix_sf() tests*/
-// Test(base_create_matrix, create01, .description="Create an 8x1 matrix") {
-//     matrix_sf *mat = create_matrix_sf('V', "8 1 [-105 ; -19 ; -140 ; 122 ; -123 ; 105 ; 90 ; 90 ; ]");
-//     expect_matrices_equal(mat, 8, 1, (int[]){-105, -19, -140, 122, -123, 105, 90, 90});
-//     cr_expect_eq(mat->name, 'V', "The new matrix did not have the expected name. Actual: %c, Expected: V", mat->name);
-// }
+Test(base_create_matrix, create01, .description="Create an 8x1 matrix") {
+    matrix_sf *mat = create_matrix_sf('V', "8 1 [-105 ; -19 ; -140 ; 122 ; -123 ; 105 ; 90 ; 90 ; ]");
+    expect_matrices_equal(mat, 8, 1, (int[]){-105, -19, -140, 122, -123, 105, 90, 90});
+    cr_expect_eq(mat->name, 'V', "The new matrix did not have the expected name. Actual: %c, Expected: V", mat->name);
+}
 
-// Test(base_create_matrix, create02, .description="Create a 7x3 matrix") {
-//     matrix_sf *mat = create_matrix_sf('Z', "7 3 [137 39 111 ; -142 -128 -45 ; 116 -135 134 ; 91 64 32 ; 88 148 139 ; 51 -45 35 ; 143 89 -64 ; ]");
-//     expect_matrices_equal(mat, 7, 3, (int[]){137, 39, 111, -142, -128, -45, 116, -135, 134, 91, 64, 32, 88, 148, 139, 51, -45, 35, 143, 89, -64});
-//     cr_expect_eq(mat->name, 'Z', "The new matrix did not have the expected name. Actual: %c, Expected: Z", mat->name);
-// }
+Test(base_create_matrix, create02, .description="Create a 7x3 matrix") {
+    matrix_sf *mat = create_matrix_sf('Z', "7 3 [137 39 111 ; -142 -128 -45 ; 116 -135 134 ; 91 64 32 ; 88 148 139 ; 51 -45 35 ; 143 89 -64 ; ]");
+    expect_matrices_equal(mat, 7, 3, (int[]){137, 39, 111, -142, -128, -45, 116, -135, 134, 91, 64, 32, 88, 148, 139, 51, -45, 35, 143, 89, -64});
+    cr_expect_eq(mat->name, 'Z', "The new matrix did not have the expected name. Actual: %c, Expected: Z", mat->name);
+}
 
 // /* infix2postfix_sf() tests */
 // Test(base_infix2postfix, infix2postfix01, .description="Convert a simple infix expression to posfix") {

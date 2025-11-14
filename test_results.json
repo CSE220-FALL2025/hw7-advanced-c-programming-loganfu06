@@ -1,6 +1,6 @@
 {
   "id": "Criterion v2.4.1",
-  "passed": 21,
+  "passed": 23,
   "failed": 0,
   "errored": 0,
   "skipped": 0,
@@ -13,22 +13,22 @@
       "skipped": 0,
       "tests": [
         {
-          "name": "trans02",
-          "assertions": 1,
-          "status": "PASSED"
-        },
-        {
           "name": "trans01",
           "assertions": 1,
           "status": "PASSED"
         },
         {
-          "name": "mult01",
+          "name": "trans02",
           "assertions": 1,
           "status": "PASSED"
         },
         {
           "name": "mult02",
+          "assertions": 1,
+          "status": "PASSED"
+        },
+        {
+          "name": "mult01",
           "assertions": 1,
           "status": "PASSED"
         },
@@ -67,12 +67,12 @@
           "status": "PASSED"
         },
         {
-          "name": "add02",
+          "name": "mult01",
           "assertions": 3,
           "status": "PASSED"
         },
         {
-          "name": "mult01",
+          "name": "add02",
           "assertions": 3,
           "status": "PASSED"
         },
@@ -144,13 +144,32 @@
           "status": "PASSED"
         },
         {
-          "name": "search_bst02",
-          "assertions": 5,
+          "name": "search_bst01",
+          "assertions": 3,
           "status": "PASSED"
         },
         {
-          "name": "search_bst01",
-          "assertions": 3,
+          "name": "search_bst02",
+          "assertions": 5,
+          "status": "PASSED"
+        }
+      ]
+    },
+    {
+      "name": "base_create_matrix",
+      "passed": 2,
+      "failed": 0,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "create02",
+          "assertions": 4,
+          "status": "PASSED"
+        },
+        {
+          "name": "create01",
+          "assertions": 4,
           "status": "PASSED"
         }
       ]

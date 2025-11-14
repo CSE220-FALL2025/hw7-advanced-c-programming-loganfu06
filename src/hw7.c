@@ -99,7 +99,38 @@ matrix_sf* transpose_mat_sf(const matrix_sf *mat) {
 }
 
 matrix_sf* create_matrix_sf(char name, const char *expr) {
-    return NULL;
+    char *endPointer;
+    int rows = strtol(expr, &endPointer, 10);
+    expr = endPointer;
+    int cols = strtol(expr, &endPointer, 10);
+    expr = endPointer;
+    matrix_sf *m = malloc(sizeof(matrix_sf) + rows*cols*sizeof(int));
+    while(ispunct(*expr) || isspace(*expr)) {
+        expr++;
+        if(*expr == '-') {
+            break;
+        }
+    }
+    m->name = name;
+    m->num_rows = rows;
+    m->num_cols = cols;
+    int i = 0;
+    while(1) {
+        int num = strtol(expr, &endPointer, 10);
+        if(expr == endPointer) {
+            break;
+        }
+        m->values[i] = num;
+        i++;
+        expr = endPointer;
+        while(ispunct(*expr) || isspace(*expr)) {
+            expr++;
+            if(*expr == '-') {
+                break;
+            }
+        }
+    }
+    return m;
 }
 
 char* infix2postfix_sf(char *infix) {
