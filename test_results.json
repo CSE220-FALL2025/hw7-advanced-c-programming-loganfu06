@@ -1,6 +1,6 @@
 {
   "id": "Criterion v2.4.1",
-  "passed": 27,
+  "passed": 30,
   "failed": 0,
   "errored": 0,
   "skipped": 0,
@@ -52,12 +52,12 @@
       "skipped": 0,
       "tests": [
         {
-          "name": "trans02",
+          "name": "trans01",
           "assertions": 3,
           "status": "PASSED"
         },
         {
-          "name": "trans01",
+          "name": "trans02",
           "assertions": 3,
           "status": "PASSED"
         },
@@ -72,12 +72,12 @@
           "status": "PASSED"
         },
         {
-          "name": "add02",
+          "name": "add01",
           "assertions": 3,
           "status": "PASSED"
         },
         {
-          "name": "add01",
+          "name": "add02",
           "assertions": 3,
           "status": "PASSED"
         }
@@ -120,12 +120,12 @@
           "status": "PASSED"
         },
         {
-          "name": "infix2postfix02",
+          "name": "infix2postfix03",
           "assertions": 1,
           "status": "PASSED"
         },
         {
-          "name": "infix2postfix03",
+          "name": "infix2postfix02",
           "assertions": 1,
           "status": "PASSED"
         },
@@ -185,6 +185,30 @@
       ]
     },
     {
+      "name": "base_evaluate_expr",
+      "passed": 3,
+      "failed": 0,
+      "errored": 0,
+      "skipped": 0,
+      "tests": [
+        {
+          "name": "expr03",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "expr02",
+          "assertions": 3,
+          "status": "PASSED"
+        },
+        {
+          "name": "expr01",
+          "assertions": 3,
+          "status": "PASSED"
+        }
+      ]
+    },
+    {
       "name": "base_create_matrix",
       "passed": 2,
       "failed": 0,
@@ -192,12 +216,12 @@
       "skipped": 0,
       "tests": [
         {
-          "name": "create01",
+          "name": "create02",
           "assertions": 4,
           "status": "PASSED"
         },
         {
-          "name": "create02",
+          "name": "create01",
           "assertions": 4,
           "status": "PASSED"
         }

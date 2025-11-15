@@ -203,7 +203,87 @@ char* infix2postfix_sf(char *infix) {
 }
 
 matrix_sf* evaluate_expr_sf(char name, char *expr, bst_sf *root) {
-    return NULL;
+    char *postFix = infix2postfix_sf(expr);
+    char *original = postFix;
+    struct stack {
+        matrix_sf *value;
+        struct stack *prev;
+    };
+    struct stack *top = NULL;
+    while(*postFix != '\0') {
+        char c = *postFix;
+        if(isalpha(c)) {
+            matrix_sf *current = find_bst_sf(c, root);
+            struct stack *newTop = malloc(sizeof(struct stack));
+            newTop->value = current;
+            newTop->prev = top;
+            top = newTop;
+        }
+        else if(c == '\'') {
+            struct stack *oldTop = top;
+            matrix_sf *transposed = transpose_mat_sf(top->value);
+            top = top->prev;
+            if(!isalpha(oldTop->value->name)) {
+                free(oldTop->value);
+            }
+            free(oldTop);
+            transposed->name = '1';
+            struct stack *newTop = malloc(sizeof(struct stack));
+            newTop->value = transposed;
+            newTop->prev = top;
+            top = newTop;
+        }
+        else if(c == '+') {
+            struct stack *oldTop1 = top;
+            matrix_sf *x = top->value;
+            top = top->prev;
+            struct stack *oldTop2 = top;
+            matrix_sf *y = top->value;
+            top = top->prev;
+            matrix_sf *result = add_mats_sf(x, y);
+            result->name = '1';
+            if(!isalpha(x->name)) {
+                free(x);
+            }
+            if(!isalpha(y->name)) {
+                free(y);
+            }
+            free(oldTop1);
+            free(oldTop2);
+            struct stack *newTop = malloc(sizeof(struct stack));
+            newTop->value = result;
+            newTop->prev = top;
+            top = newTop;
+        }
+        else if(c == '*') {
+            struct stack *oldTop1 = top;
+            matrix_sf *y = top->value;
+            top = top->prev;
+            struct stack *oldTop2 = top;
+            matrix_sf *x = top->value;
+            top = top->prev;
+            matrix_sf *result = mult_mats_sf(x, y);
+            result->name = '1';
+            if(!isalpha(x->name)) {
+                free(x);
+            }
+            if(!isalpha(y->name)) {
+                free(y);
+            }
+            free(oldTop1);
+            free(oldTop2);
+            struct stack *newTop = malloc(sizeof(struct stack));
+            newTop->value = result;
+            newTop->prev = top;
+            top = newTop;
+        }
+        postFix++;
+    }
+    matrix_sf *m = top->value;
+    m->name = name;
+    free(top);
+    free(original);
+    return m;
 }
 
 matrix_sf *execute_script_sf(char *filename) {
