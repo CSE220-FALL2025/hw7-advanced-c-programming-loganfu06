@@ -306,7 +306,7 @@ Test(base_insert_bst, insert_bst03, .description="Test if insert_bst_sf creates 
     // Note: test does not deallocate memory of BST.    
 }
 
-/* find_bst_sf() tests */
+// /* find_bst_sf() tests */
 Test(base_find_bst, search_bst01, .description="Test if find_bst returns the correct matrix.") {
     bst_sf *root = NULL;
     char names[] = "HABETZ";
@@ -377,7 +377,7 @@ Test(base_find_bst, search_bst03, .description="Test if find_bst returns the cor
     // Note: test does not deallocate memory of BST.  
 }
 
-/* free_bst_sf() tests */
+// /* free_bst_sf() tests */
 Test(base_free_bst, free_bst01, .description="Test if BST is properly deallocated.") {
     expect_no_valgrind_errors(run_with_valgrind("free_bst01"));
 }
@@ -390,7 +390,7 @@ Test(base_free_bst, free_bst03, .description="Test if BST is properly deallocate
     expect_no_valgrind_errors(run_with_valgrind("free_bst03"));
 }
 
-/* create_matrix_sf() tests*/
+// /* create_matrix_sf() tests*/
 Test(base_create_matrix, create01, .description="Create an 8x1 matrix") {
     matrix_sf *mat = create_matrix_sf('V', "8 1 [-105 ; -19 ; -140 ; 122 ; -123 ; 105 ; 90 ; 90 ; ]");
     expect_matrices_equal(mat, 8, 1, (int[]){-105, -19, -140, 122, -123, 105, 90, 90});
@@ -403,7 +403,7 @@ Test(base_create_matrix, create02, .description="Create a 7x3 matrix") {
     cr_expect_eq(mat->name, 'Z', "The new matrix did not have the expected name. Actual: %c, Expected: Z", mat->name);
 }
 
-/* infix2postfix_sf() tests */
+// /* infix2postfix_sf() tests */
 Test(base_infix2postfix, infix2postfix01, .description="Convert a simple infix expression to posfix") {
     char *actual = infix2postfix_sf("A+B*C");
     char *expected = "ABC*+";
@@ -432,7 +432,7 @@ Test(base_infix2postfix, infix2postfix04, .description="Convert a complex expres
         actual, expected);
 }
 
-/* evaluate_expr_sf tests*/
+// /* evaluate_expr_sf tests*/
 Test(base_evaluate_expr, expr01, .description="Given root of a tree, evaluation of an expression") {
     bst_sf* root = build_bst();
     matrix_sf* result = evaluate_expr_sf('R', "G * C + F'", root);
@@ -451,9 +451,9 @@ Test(base_evaluate_expr, expr03, .description="Given root of a tree, evaluation 
     expect_matrices_equal(result, 4, 3, (int[]){-11171376, 56535582, 3236371, 69463160, -416294603, -47900609, 76095851, -459940949, -56668593, 60848961, -362841916, -37213021});
 }
 
-/* execute_script_sf tests */
-// 1. call execute_script_sf() to check for correctness()
-// 2. call execute_script_sf() via valgrind to check for memory errors
+// /* execute_script_sf tests */
+// // 1. call execute_script_sf() to check for correctness()
+// // 2. call execute_script_sf() via valgrind to check for memory errors
 Test(base_execute, add_mats01) { run_script_without_valgrind("script01"); }
 Test(base_execute_valgrind, add_mats01) { expect_no_valgrind_errors(run_script_with_valgrind("script01")); }
 

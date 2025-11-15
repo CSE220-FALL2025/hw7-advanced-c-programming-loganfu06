@@ -1,0 +1,13 @@
+==36308== Memcheck, a memory error detector
+==36308== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==36308== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==36308== Command: ./bin/free_bst02
+==36308== 
+==36308== 
+==36308== HEAP SUMMARY:
+==36308==     in use at exit: 0 bytes in 0 blocks
+==36308==   total heap usage: 12 allocs, 12 frees, 216 bytes allocated
+==36308== 
+==36308== All heap blocks were freed -- no leaks are possible
+==36308== 
+==36308== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
