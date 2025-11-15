@@ -46,6 +46,7 @@ void free_bst_sf(bst_sf *root) {
     if(root != NULL) {
         free_bst_sf(root->left_child);
         free_bst_sf(root->right_child);
+        free(root->mat);
         free(root);
     }
 }
@@ -286,10 +287,6 @@ matrix_sf* evaluate_expr_sf(char name, char *expr, bst_sf *root) {
     return m;
 }
 
-matrix_sf *execute_script_sf(char *filename) {
-   return NULL;
-}
-
 // This is a utility function used during testing. Feel free to adapt the code to implement some of
 // the assignment. Feel equally free to ignore it.
 matrix_sf *copy_matrix(unsigned int num_rows, unsigned int num_cols, int values[]) {
@@ -299,6 +296,48 @@ matrix_sf *copy_matrix(unsigned int num_rows, unsigned int num_cols, int values[
     m->num_cols = num_cols;
     memcpy(m->values, values, num_rows*num_cols*sizeof(int));
     return m;
+}
+
+matrix_sf *execute_script_sf(char *filename) {
+    FILE *fp = fopen(filename, "r");
+    char *buf = NULL;
+    size_t max_line_size = MAX_LINE_LEN;
+    ssize_t read;
+    bst_sf *root = NULL;
+    char name;
+    while((read = getline(&buf, &max_line_size, fp)) != -1) {
+        char *str = buf;
+        name = *str;
+        str++;
+        while(isspace(*str) || ispunct(*str)) {
+            str++;
+            if(isalpha(*str) || isdigit(*str) || *str == '(') {
+                break;
+            }
+        }
+        // printf("Filename %s\n", filename);
+        // printf("Read line: %s\n", str);
+        // printf("Name: %c\n", name);
+        if(isdigit(*str)) {
+            // printf("This line is new matrix: %s", str);
+            matrix_sf *newMatrix = create_matrix_sf(name, str);
+            // print_matrix_sf(newMatrix);
+            root = insert_bst_sf(newMatrix, root);
+        }
+        else {
+            // printf("This line is new computation: %s", str);
+            matrix_sf *newMatrix = evaluate_expr_sf(name, str, root);
+            root = insert_bst_sf(newMatrix, root);
+        }
+    }
+    matrix_sf *m = find_bst_sf(name, root);
+    matrix_sf *mCopy = copy_matrix(m->num_rows, m->num_cols, m->values);
+    mCopy->name = 'C';
+    free(buf);
+    free_bst_sf(root);
+    fclose(fp);
+
+    return mCopy;
 }
 
 // Don't touch this function. It's used by the testing framework.

@@ -1,0 +1,14 @@
+==36248== Memcheck, a memory error detector
+==36248== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==36248== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==36248== Command: ./bin/execute_script script12
+==36248== 
+6 7 -4068 10074 10664 -18266 3049 -23650 -17499 19004 -7341 5186 5146 -90 27870 35267 -49563 15570 -17855 48778 -48594 -22230 -9421 -17250 40115 16156 -7064 -19737 -17124 19508 7485 4862 10460 -35550 23636 -20186 -26608 -1744 26567 19633 21236 -39179 18428 70535
+==36248== 
+==36248== HEAP SUMMARY:
+==36248==     in use at exit: 0 bytes in 0 blocks
+==36248==   total heap usage: 24 allocs, 24 frees, 9,841 bytes allocated
+==36248== 
+==36248== All heap blocks were freed -- no leaks are possible
+==36248== 
+==36248== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
